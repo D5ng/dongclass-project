@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+html,body {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  width: 150px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+li.active {
+  background-color: darkcyan;
+  color: #fff;
+  border: none;
+}
+
+li + li {
+  margin-left: 20px;
+}
+
+button {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+}
