@@ -1,29 +1,27 @@
 const tabElem = document.querySelector(".tab");
 
 const targetInfo = {
-  btnElem: null,
-  tabElem: null,
+  btnElem: document.querySelector(".tab-btns__item:nth-of-type(1)"),
+  tabElem: document.querySelector(".tab-list__item:nth-of-type(1)"),
 };
+
 
 function clickHandler(event) {
   if (event.target.nodeName !== "BUTTON") return;
-  if(targetInfo.btnElem && targetInfo.tabElem) {
-    inactiveClass(targetInfo.btnElem);
-    inactiveClass(targetInfo.tabElem);
+  if (isPrevElement()) {
+    for (const key in targetInfo) inactiveClass(targetInfo[key]);
   }
 
   targetInfo.btnElem = searchElem(event.target);
   targetInfo.tabElem = document.querySelector(`#${targetInfo.btnElem.dataset.tab}`);
 
-  activeClass(targetInfo.tabElem);
-  activeClass(targetInfo.btnElem)
+  for (const key in targetInfo) activeClass(targetInfo[key]);
 }
 
+const isPrevElement = () => targetInfo.btnElem && targetInfo.tabElem
 const searchElem = (target) => {
-  while (!target.classList.contains("tab-btns__item")) {
+  while (!target.classList.contains("tab-btns__item"))
     target = target.parentNode;
-  }
-
   return target
 }
 const activeClass = (target) => target.classList.add("active");
