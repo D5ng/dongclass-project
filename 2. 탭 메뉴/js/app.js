@@ -5,7 +5,6 @@ const targetInfo = {
   tabElem: document.querySelector(".tab-list__item:nth-of-type(1)"),
 };
 
-
 function clickHandler(event) {
   if (event.target.nodeName !== "BUTTON") return;
   if (isPrevElement()) {
