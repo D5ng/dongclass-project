@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main>
+    <form method="POST" class="form">
+      <fieldset>
+        <legend>회원가입</legend>
+
+        <div class="input-layout">
+          <input type="text" placeholder="이름을 입력하세요." />
+        </div>
+        <!-- 이름 -->
+
+        <div class="input-layout">
+          <input type="text" placeholder="아이디를 입력하세요." />
+          <div class="valid-success valid">
+            <svg xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512">
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg>
+          </div>
+        </div>
+        <!-- 아아디 -->
+
+        <div class="input-layout">
+          <input type="password" placeholder="비밀번호를 입력하세요." />
+        </div>
+        <!-- 비밀번호 -->
+
+        <div class="input-layout">
+          <input type="password" placeholder="비밀번호를 한번 더 입력하세요." />
+          <p class="valid-success valid">✅ 비밀번호가 일치합니다.</p>
+        </div>
+        <!-- 비밀번호 확인 -->
+
+        <button class="form-submit">회원가입</button>
+      </fieldset>
+    </form>
+  </main>
+</body>
+</html>
