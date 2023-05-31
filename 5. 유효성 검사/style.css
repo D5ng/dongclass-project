@@ -45,6 +45,7 @@ form input {
   border-radius: 10px;
   background-color: #f7f7f7;
   font-size: 12px;
+  outline: none;
 }
 
 form input::placeholder {
@@ -56,7 +57,7 @@ form input::placeholder {
 }
 
 .input-layout + .input-layout {
-  padding-top: 10px;
+  margin-top: 10px;
 }
 
 .form-submit {
@@ -81,8 +82,14 @@ form input::placeholder {
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
-  margin-top: 5px;
   padding: 0 10px;
+  opacity: 0;
+}
+
+.valid-success .valid-info, 
+.valid-error .valid-info {
+  opacity: 1;
+  transition: 0.3s;
 }
 
 .valid-info svg {
