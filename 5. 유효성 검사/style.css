@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
 }
 
 html,body {
@@ -61,12 +64,18 @@ form input::placeholder {
   height: 48px;
   border: none;
   border-radius: 10px;
-  background-color: #f4f4f4;
-  margin-top: 15px;
+  margin-top: 30px;
   cursor: pointer;
+  background-color: #00a18d;
+  color: #fff;
+  font-size: 14px;
 }
 
-.valid {
+.form-submit:disabled {
+  background-color: #f4f4f4;
+}
+
+.valid-info {
   position: absolute;
   right: 0;
   top: 50%;
@@ -76,33 +85,23 @@ form input::placeholder {
   padding: 0 10px;
 }
 
-.valid svg {
+.valid-info svg {
   width: 16px;
   height: 16px;
+}
+
+.valid-success input { 
+  border: 1px solid #57d699;
+}
+
+.valid-success svg {
   fill: #57d699;
 }
 
-.valid svg path {
-  animation: success 1s infinite;
-  stroke-dasharray: 100;
+.valid-error input {
+  border: 1px solid #ff1a68;
 }
 
-@keyframes success {
-  0% { 
-    stroke-dashoffset: 0;
-    stroke-dasharray: 100;
-  }
-
-  100% {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 1273;
-  }
-}
-
-.valid-success { 
-  color: #57d699;
-}
-
-.valid-error {
-  color: #ff1a68;
+.valid-error svg {
+  fill: #ff1a68;
 }
