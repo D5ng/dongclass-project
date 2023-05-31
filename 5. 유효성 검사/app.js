@@ -1,9 +1,4 @@
 const form = document.querySelector('form');
-
-
-
-// /([^가-힣\x20])/i
-
 const nameInput = document.querySelector('.input-name');
 const idInput = document.querySelector('.input-id');
 const passwordInput = document.querySelector('.input-password');
@@ -15,9 +10,15 @@ const regExpObject = {
 	"input-password": /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
 }
 
+const isValid = {
+	name: false,
+	id: false,
+	password: false,
+	passwordConfirm: false
+}
+
 function debounce(callback, seconds){
 	let timerId;
-
 	return function(event){
 		if(timerId) clearTimeout(timerId);
 		timerId = setTimeout(() => {
@@ -26,118 +27,64 @@ function debounce(callback, seconds){
 	}
 }
 
-
-
-function validate(callback, target, regExp){
-	return callback(target, regExp)
-}
-
-function validateDefault(target, regExp){
-	const parentDiv = target.parentNode;
-	if(regExp.test(target.value)){
-		parentDiv.classList.remove('valid-error')
-		parentDiv.classList.add('valid-success')
-		return true;
-	} else {
-		parentDiv.classList.remove('valid-success')
-		parentDiv.classList.add('valid-error')
-		return false;
-	}
-}
-
-
-function validatePasswordConfirm(target){
-	const parentDiv = target.parentNode;
-	if(passwordInput.value === target.value){
-		parentDiv.classList.remove('valid-error')
-		parentDiv.classList.add('valid-success')
-		return true;
-	} else {
-		parentDiv.classList.remove('valid-success')
-		parentDiv.classList.add('valid-error')
-		return false;
-	}
-}
-
-function isDisable(target){
-	// 
-}
-
+const success = (target) => target.className = 'input-layout valid-success'
+const error = (target) => target.className = 'input-layout valid-error'
 
 form.addEventListener('input', debounce((event) => {
 	const { target } = event;
 
-	let result = true;
-
-	for(const key in regExpObject){
-		if(target.className !== key) continue 
-		result = result && validate(validateDefault, target, regExpObject[key])
+	if(target.className === 'input-name'){
+		isValid.name = validate2(target, regExpObject[target.className])
 	}
 
-	if(target.className === 'input-password__confirm') {
-		result = result && validate(validatePasswordConfirm, target)
+	if(target.className === 'input-id'){
+		isValid.id = validate2(target, regExpObject[target.className])
 	}
 
-	if(result){
-		document.querySelector('.form-submit').removeAttribute("disabled");
+	if(target.className === 'input-password'){
+		isValid.password = validate2(target, regExpObject[target.className])
 	}
 
-	console.log(result);
+	if(target.className === "input-password__confirm" || target.className === "input-password"){
+		isValid.passwordConfirm = passwordIsMatch(passwordInput, passwordConfirmInput)
+	}
 
+	for(const key in isValid){
+		if(!isValid[key]){
+			document.querySelector('.form-submit').setAttribute('disabled', 'true');		
+			return
+		}
+	}
 
-	// if(document.querySelector())
-
-	// switch(target.className){
-	// 	case "input-name": 
-	// 		validate(target, regExpObject.name);
-	// 		break;
-
-	// 	case "input-id": 
-	// 		validate(target, regExpObject.id);
-	// 		break;
-
-	// 	case "input-password": 
-	// 		validate(target, regExpObject.password)
-	// 		break;
-
-	// 	case "input-password__confirm": 
-	// 		validatePasswordConfirm(target)
-	// 		break;
-	// }
+	document.querySelector('.form-submit').setAttribute('disabled', 'false');
 }, 300))
 
+function passwordIsMatch(password, passwordConfirm){
+	const parentDiv = passwordConfirm.parentElement
+	if(password.value === passwordConfirm.value){
+		success(parentDiv)
+		return true;
+	} else {
+		error(parentDiv)
+		return false;
+	}
+}
 
+function validate(input, regExp){
+	const parentDiv = input.parentElement
+	if(regExp.test(input.value)){
+		success(parentDiv)
+		return true;
+	} else {
+		error(parentDiv)
+		return false;
+	}
+}
 
-// idInput.addEventListener('input', ({ currentTarget, target: { value }}) => {
-// 	if(regExpObject.id.test(value)){
-// 		currentTarget.parentNode.classList.remove('valid-error')
-// 		currentTarget.parentNode.classList.add('valid-success')
-// 	} else {
-// 		currentTarget.parentNode.classList.remove('valid-success')
-// 		currentTarget.parentNode.classList.add('valid-error')
-// 	}
-// })
-
-// passwordInput.addEventListener('input', ({ currentTarget, target: { value }}) => {
-// 	if(regExpObject.password.test(value)){
-// 		currentTarget.parentNode.classList.remove('valid-error')
-// 		currentTarget.parentNode.classList.add('valid-success')
-// 	} else {
-// 		currentTarget.parentNode.classList.remove('valid-success')
-// 		currentTarget.parentNode.classList.add('valid-error')
-// 	}
-// })
-
-// passwordConfirmInput.addEventListener('input', ({ currentTarget, target: { value }}) => {
-// 	if(passwordInput.value === value){
-// 		currentTarget.parentNode.classList.remove('valid-error')
-// 		currentTarget.parentNode.classList.add('valid-success')
-// 	} else {
-// 		currentTarget.parentNode.classList.remove('valid-success')
-// 		currentTarget.parentNode.classList.add('valid-error')
-// 	}
-// })
-
+// nameInput.addEventListener('input', debounce(({ target }) => isInputValid[target.className] = validate(target, regExpObject[target.className]), 300))
+// idInput.addEventListener('input', debounce(({ target }) => isInputValid[target.className] = validate(target, regExpObject[target.className]), 300))
+// passwordInput.addEventListener('input', debounce(({ target }) => isInputValid[target.className] = validate(target, regExpObject[target.className]), 300))
+// passwordConfirmInput.addEventListener('input', debounce(({ target }) => isInputValid[target.className] = validatePasswordConfirm(target), 300))
 
 
 // https://devjjsjjj.tistory.com/entry/Javascript-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC

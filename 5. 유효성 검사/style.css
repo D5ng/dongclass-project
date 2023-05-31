@@ -72,7 +72,7 @@ form input::placeholder {
   font-size: 14px;
 }
 
-.form-submit:disabled {
+.form-submit[disabled="true"] {
   background-color: #f4f4f4;
 }
 
