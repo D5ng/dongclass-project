@@ -1,5 +1,5 @@
 export default function InputState(){
-  let isInputValid = {
+  let inputValidate = {
     "input-name": false,
     "input-id": false,
     "input-password": false,
@@ -7,12 +7,12 @@ export default function InputState(){
   };
 
   return {
-    get isInputValid(){
-      return { ...isInputValid };    
+    get inputValidate() {
+      return { ...inputValidate };
     },
 
-    set isInputValid({ props, value}){
-      isInputValid = { ...isInputValid, [props]: value };
+    setInputValidate(props, value) {
+      inputValidate = { ...inputValidate, [props]: value };
     },
-  }
+  };
 }
