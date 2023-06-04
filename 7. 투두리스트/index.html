@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Style.css -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <template id="todo-content">
+    <section class="todo">
+      <div class="todo-header">
+        <div class="todo-header__date">2023.06.04</div>
+        <div class="todo-header__today en">Today</div>
+        <div class="todo-header__tasks en">7 Tasks</div>
+      </div>
+    
+      <ul class="todo-body">
+        <div class="todo-body__list checked">
+          <button type="button" class="todo-body__button"><i class="fa-solid fa-check"></i></button>
+          <p class="todo-body__content">HTML Study</p>
+          <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+        <div class="todo-body__list">
+          <button type="button" class="todo-body__button"></button>
+          <p class="todo-body__content">CSS Study</p>
+          <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+        <div class="todo-body__list">
+          <button type="button" class="todo-body__button"></button>
+          <p class="todo-body__content">JS Study</p>
+          <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+      </ul>
+    
+      <div class="todo-modal">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </section>
+  </template>
+
+  <template id="todo-input">
+    <form>
+      <div class="todo-input__layout">
+        <input type="text" placeholder="할 일을 입력해주세요." />
+      </div>
+      <div class="todo-input__layout todo-input__submit">
+        <input type="submit" value="등록하기" />
+      </div>
+    </form>
+  </template>
+
+
+  <main id="app">
+    <section class="todo">
+      <div class="todo-header">
+        <div class="todo-header__date">2023.06.04</div>
+        <div class="todo-header__today en">Today</div>
+        <div class="todo-header__tasks en">7 Tasks</div>
+      </div>
+
+      <ul class="todo-body">
+        <div class="todo-body__list checked">
+          <button type="button" class="todo-body__button"><i class="fa-solid fa-check"></i></button>
+          <p class="todo-body__content">HTML Study</p>
+          <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+        <div class="todo-body__list">
+          <button type="button" class="todo-body__button"></button>
+          <p class="todo-body__content">CSS Study</p>
+          <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+        <div class="todo-body__list">
+          <button type="button" class="todo-body__button"></button>
+          <p class="todo-body__content">JS Study</p>
+          <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+      </ul>
+
+      <div class="todo-modal">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </section>
+
+    <section class="todo-input">
+      <form>
+        <div class="todo-input__layout">
+          <input type="text" placeholder="할 일을 입력해주세요." />
+        </div>
+        <div class="todo-input__layout todo-input__submit">
+          <input type="submit" value="등록하기" />
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

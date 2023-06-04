@@ -1,0 +1,53 @@
+.todo-body {
+  height: 300px;
+  overflow-y: scroll;
+  margin-top: 20px;
+}
+
+.todo-body__list {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.todo-body__list + .todo-body__list {
+  margin-top: 20px;
+}
+
+.todo-body__button {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  background-color: transparent;
+  position: relative;
+}
+
+.todo-body__button i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.todo-body__list.checked .todo-body__button {
+  border: 1px solid #3baacd;
+}
+
+.todo-body__list.checked .todo-body__button i {
+  color: #3baacd;
+}
+
+.todo-body__content {
+  flex: 1;
+  margin: 0 30px;
+}
+
+.todo-body__delete {
+  font-size: 14px;
+  color: #bbb;
+}
+
+.todo-body__delete i {
+  color: inherit;
+}
