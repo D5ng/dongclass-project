@@ -17,4 +17,18 @@
   font-weight: 500;
   padding-bottom: 10px;
   border-bottom: 1px solid #dedede;
+  display: flex;
+}
+
+.todo-header__tasks b {
+  font-weight: 500;
+  color: #333;
+}
+
+.todo-header__tasks span {
+  color: #aaa;
+}
+
+.todo-header__tasks div + div {
+  margin-left: 20px;
 }

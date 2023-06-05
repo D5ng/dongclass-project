@@ -11,7 +11,8 @@ export default class TodoList extends Component {
 
     todoState.addListener((todos) => {
       const ul = this.element.querySelector(".todo-body");
-      this.printTasks(todos.length);
+      this.printAllTasks(todos);
+      this.printDoneTasks(todos);
 
       ul.innerHTML = "";
       for (const todo of todos) {
@@ -52,8 +53,13 @@ export default class TodoList extends Component {
     dateElement.textContent = currentDate;
   }
 
-  printTasks(todoLength){
-    const tasksElement = this.element.querySelector('.todo-header__tasks');
-    tasksElement.textContent = `${todoLength} Tasks`;
+  printAllTasks(todos){
+    const allTasksElement = this.element.querySelector(".todo-header__tasks-all span");
+    allTasksElement.textContent = `${todos.length} Tasks`;
+  }
+
+  printDoneTasks(todos){
+    const doneTasksElement = this.element.querySelector(".todo-header__tasks-done span");
+    doneTasksElement.textContent = `${todos.filter((todo) => todo.checked).length} Tasks`;
   }
 }
