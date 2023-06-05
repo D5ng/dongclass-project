@@ -42,6 +42,7 @@ class TodoState {
 
 const todoState = TodoState.getInstance();
 
+
 class TodoItem {
   constructor(todoItem) {
     this.templateElement = document.getElementById("todo-item");
@@ -65,15 +66,27 @@ class TodoItem {
   }
 }
 
-class TodoList {
-  constructor() {
-    this.templateElement = document.getElementById("todo-content");
-    this.hostElement = document.getElementById("app");
+class Component {
+  constructor(templateId, hostId) {
+    this.templateElement = document.querySelector(templateId);
+    this.hostElement = document.querySelector(hostId);
 
     const importNode = document.importNode(this.templateElement.content, true);
     this.element = importNode.firstElementChild;
 
     this.renderTemplate();
+  }
+
+  renderTemplate() {
+    this.hostElement.insertAdjacentElement("beforeend", this.element);
+  }
+}
+
+class TodoList extends Component {
+  constructor() {
+    super("#todo-content", "#app");
+
+    this.printTime();
     this.configure();
 
     todoState.addListener((todos) => {
@@ -81,27 +94,6 @@ class TodoList {
       ul.innerHTML = ''
       for(const todo of todos){
         new TodoItem(todo);
-        // const div = document.createElement('div')
-        // const checkBtn = document.createElement("button");
-        // const deleteBtn = document.createElement('button');
-        // const title = document.createElement('p');
-
-        // div.id = todo.id
-        // div.className = 'todo-body__list'
-        // checkBtn.className = "todo-body__button";
-        // deleteBtn.className = "todo-body__delete en";
-        // title.className = "todo-body__content";
-
-        // div.innerHTML = ``;
-        // checkBtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
-        // title.textContent = todo.title        
-        // deleteBtn.innerHTML = `<i class="fa-regular fa-trash-can"></i>`;
-
-        // div.appendChild(checkBtn)
-        // div.appendChild(title);
-        // div.appendChild(deleteBtn);
-
-        // ul.appendChild(div);
       }
     })
   }
@@ -121,31 +113,22 @@ class TodoList {
   }
 
   printTime(){
+    const dateElement = this.element.querySelector(".todo-header__date");
     const date = new Date();
     const currentDate = `${date.getFullYear()}.${this.insertAtNumberStart(date.getMonth() + 1)}.${this.insertAtNumberStart(date.getDate())}`
 
-    return currentDate
-  }
+    console.log(this.element);
 
-
-  renderTemplate() {
-    this.element.querySelector(".todo-header__date").textContent = this.printTime()
-    this.hostElement.insertAdjacentElement("beforeend", this.element);
+    dateElement.textContent = currentDate
   }
 }
 
 
-class TodoInput {
+class TodoInput extends Component {
   constructor() {
-    this.templateElement = document.getElementById("todo-input");
-    this.hostElement = document.getElementById("app");
-
-    const importNode = document.importNode(this.templateElement.content, true);
-    this.element = importNode.firstElementChild;
-
+    super("#todo-input", "#app");
     this.inputElement = this.element.querySelector(".todo-input__title");
 
-    this.renderTemplate();
     this.configure();
   }
 
@@ -168,10 +151,6 @@ class TodoInput {
     todoState.addTodo(Date.now(), this.inputElement.value);
 
     this.clearInput();
-  }
-
-  renderTemplate() {
-    this.hostElement.insertAdjacentElement("beforeend", this.element);
   }
 }
 
