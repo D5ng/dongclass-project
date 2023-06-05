@@ -20,13 +20,13 @@
   <template id="todo-content">
     <section class="todo">
       <div class="todo-header">
-        <div class="todo-header__date">2023.06.04</div>
+        <div class="todo-header__date en">YYYY.MM.DD</div>
         <div class="todo-header__today en">Today</div>
         <div class="todo-header__tasks en">7 Tasks</div>
       </div>
     
       <ul class="todo-body">
-        <div class="todo-body__list checked">
+        <!-- <div class="todo-body__list checked">
           <button type="button" class="todo-body__button"><i class="fa-solid fa-check"></i></button>
           <p class="todo-body__content">HTML Study</p>
           <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
@@ -40,7 +40,7 @@
           <button type="button" class="todo-body__button"></button>
           <p class="todo-body__content">JS Study</p>
           <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
-        </div>
+        </div> -->
       </ul>
     
       <div class="todo-modal">
@@ -53,7 +53,7 @@
     <section class="todo-input">
       <form>
         <div class="todo-input__layout">
-          <input type="text" placeholder="할 일을 입력해주세요." />
+          <input type="text" placeholder="할 일을 입력해주세요." class="todo-input__title" autofocus />
         </div>
         <div class="todo-input__layout todo-input__submit">
           <input type="submit" value="등록하기" />
@@ -62,10 +62,10 @@
     </section>
   </template>
 
-  <template id="todo-list">
+  <template id="todo-item">
     <div class="todo-body__list">
-      <button type="button" class="todo-body__button"></button>
-      <p class="todo-body__content">CSS Study</p>
+      <button type="button" class="todo-body__button"><i class="fa-solid fa-check"></i></button>
+      <p class="todo-body__content"></p>
       <button class="todo-body__delete en"><i class="fa-regular fa-trash-can"></i></button>
     </div>
   </template>
@@ -77,7 +77,7 @@
   <main id="app">
     <!-- <section class="todo">
       <div class="todo-header">
-        <div class="todo-header__date">2023.06.04</div>
+        <div class="todo-header__date en">YYYY.MM.DD</div>
         <div class="todo-header__today en">Today</div>
         <div class="todo-header__tasks en">7 Tasks</div>
       </div>
@@ -108,7 +108,7 @@
     <!-- <section class="todo-input">
       <form>
         <div class="todo-input__layout">
-          <input type="text" placeholder="할 일을 입력해주세요." />
+          <input type="text" placeholder="할 일을 입력해주세요." class="todo-input__title" />
         </div>
         <div class="todo-input__layout todo-input__submit">
           <input type="submit" value="등록하기" />

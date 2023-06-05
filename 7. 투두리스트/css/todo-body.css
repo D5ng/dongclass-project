@@ -28,6 +28,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: none;
 }
 
 .todo-body__list.checked .todo-body__button {
@@ -36,6 +37,10 @@
 
 .todo-body__list.checked .todo-body__button i {
   color: #3baacd;
+}
+
+.todo-body__list.checked i {
+  display: block;
 }
 
 .todo-body__content {

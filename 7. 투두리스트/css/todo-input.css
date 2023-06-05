@@ -1,9 +1,19 @@
+.active .todo-input {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
 .todo-input {
+  transform: translateY(-10%);
+  pointer-events: none;
+  opacity: 0;
   margin-top: 10px;
   border-radius: 5px;
   width: 400px;
   background-color: #fff;
   padding: 30px;
+  transition: 0.3s;
 }
 
 .todo-input__layout {
