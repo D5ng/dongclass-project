@@ -43,7 +43,23 @@
   display: block;
 }
 
+.todo-body__list.checked .todo-body__content {
+  color: #c4c4c4;
+}
+
+.todo-body__list.checked .todo-body__content:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #333;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .todo-body__content {
+  position: relative;
   flex: 1;
   margin: 0 30px;
 }

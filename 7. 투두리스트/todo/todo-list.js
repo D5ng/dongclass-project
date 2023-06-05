@@ -7,11 +7,12 @@ export default class TodoList extends Component {
     super("#todo-content", "#app");
 
     this.printTime();
-    this.configure();
+    this.configure("click", this.clickHandler.bind(this));
 
     todoState.addListener((todos) => {
       const ul = this.element.querySelector(".todo-body");
       this.printTasks(todos.length);
+
       ul.innerHTML = "";
       for (const todo of todos) {
         new TodoItem(todo);
@@ -19,13 +20,21 @@ export default class TodoList extends Component {
     });
   }
 
-  configure() {
-    this.hostElement.addEventListener("click", this.clickHandler.bind(this));
-  }
-
   clickHandler({ target }) {
     if (target.closest(".todo-modal")) {
       document.body.classList.toggle("active");
+    }
+
+    if (target.closest(".todo-body__delete")) {
+      const id = +target.closest(".todo-body__list").id;
+      todoState.deleteTodo(id);
+      return;
+    }
+
+    if(target.closest(".todo-body__list")){
+      const id = +target.closest(".todo-body__list").id;
+      todoState.checkedTodo(id);
+      return;
     }
   }
 

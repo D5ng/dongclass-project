@@ -7,11 +7,7 @@ export default class TodoInput extends Component {
     super("#todo-input", "#app");
     this.inputElement = this.element.querySelector(".todo-input__title");
 
-    this.configure();
-  }
-
-  configure() {
-    this.hostElement.addEventListener("submit", this.submitHandler.bind(this));
+    this.configure("submit", this.submitHandler.bind(this));
   }
 
   clearInput() {

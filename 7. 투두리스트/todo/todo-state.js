@@ -27,8 +27,23 @@ class TodoState {
   }
 
   addTodo(id, title) {
-    this.#todos.push(new Todo(id, title));
+    this.#todos.push(new Todo(id, title, false));
+    this.updateTodo();
+  }
 
+  checkedTodo(todoId){
+    this.#todos = this.#todos.map((todo) =>
+      todo.id === todoId ? new Todo(todoId, todo.title, !todo.checked) : todo
+    );
+    this.updateTodo()
+  }
+
+  deleteTodo(todoId){
+    this.#todos = this.#todos.filter(todo => todo.id !== todoId)
+    this.updateTodo();
+  }
+
+  updateTodo(){
     for (const listenerFn of this.#listener) {
       listenerFn([...this.#todos]);
     }

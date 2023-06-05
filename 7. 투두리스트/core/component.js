@@ -9,6 +9,10 @@ export default class Component {
     this.renderTemplate();
   }
 
+  configure(eventType, func){
+    this.hostElement.addEventListener(eventType, func)
+  }
+
   renderTemplate() {
     this.hostElement.insertAdjacentElement("beforeend", this.element);
   }
